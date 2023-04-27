@@ -1,0 +1,110 @@
+﻿@model MobilePhonesWebsite.ViewModels.SmartwatchVM.SingleSmartwatchVM;
+@{
+    ViewBag.Title = "Smartwatch";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+
+    <!-- Single Page -->
+    <div class="banner-bootom-w3-agileits py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 single-right-left ">
+                    <div class="grid images_3_of_2">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li data-thumb="/Products/GetImageSmartwatch/@Model.Id">
+                                    <div class="thumb-image">
+                                        <img src="/Products/GetImageSmartwatch/@Model.Id" data-imagezoom="true" class="img-fluid" alt="">
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                    <h3 class="mb-3">@string.Concat(Model.Brand, Model.Model)</h3>
+                    <p class="mb-3">
+                        <span class="item_price">@string.Concat(Model.Price, "лв.")</span>
+                    </p>
+                    <div class="product-single-w3l">
+                        <p class="my-3">
+                            Характеристики
+                            <ul>
+                                <li class="mb-1">
+                                    @string.Concat("Размер на дисплей: ", Model.DisplaySize, "''")
+                                </li>
+                                <li class="mb-1">
+                                    @string.Concat("Технология на дисплей: ", Model.DisplayTechnology)
+                                </li>
+                                <li class="mb-1">
+                                    @string.Concat("Живот на батерия: ", Model.BatteryLife, " Mah")
+                                </li>
+                                <li class="mb-1">
+                                    @string.Concat("Цвят: ", Model.Colour)
+                                </li>
+                            </ul>
+
+                    </div>
+                    <div class="occasion-cart">
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <div class="row">
+                                <div class="column">
+                                    <button class="btn btn-style btn-style-secondary mt-3" onclick="addToCartSmartwatch(@Model.Id)">
+                                        Добави в количка
+                                    </button>
+                                    <div id="Message"></div>
+                                </div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="column">
+                                        <button class="btn btn-style btn-style-secondary mt-3" onclick="addToLikedSmartwatch(@Model.Id)">
+                                            <i class="far fa-heart"></i>
+                                            Добави в харесани продукти
+                                        </button>
+                                        <div id="MessageLiked"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Single Page -->
+
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<!-- //common jquery plugin -->
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<!-- imagezoom -->
+<script src="js/imagezoom.js"></script>
+<!-- //imagezoom -->
+<!-- flexslider -->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
+<script src="js/jquery.flexslider.js"></script>
+<script>
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
+</script>
+<!-- //FlexSlider-->
+<!--bootstrap-->
+<script src="js/bootstrap.min.js"></script>
+<!-- //bootstrap-->
+<!-- //Js scripts -->
+</html>

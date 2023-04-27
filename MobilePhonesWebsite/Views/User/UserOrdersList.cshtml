@@ -1,0 +1,107 @@
+﻿@model List<Order>
+@{
+    ViewBag.Title = "Liked products";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Electronics Mart - Ecommerce Category Bootstrap Responsive Web Template | Checkout </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <!-- banner-2 -->
+    <div class="page-head_agile_info_w3l inner-checkout-page">
+        <div class="container py-5">
+            <h3 class="title-style text-white pt-5"><span>Преглед на поръчки</span></h3>
+            <ul class="w3_short pt-3 pb-5">
+                <li>
+                    <a href="~/Home/Index" class="text-white">Начало</a>
+                    <i class="fa fa-angle-right mx-2 text-white" aria-hidden="true"></i>
+                </li>
+                <li class="text-light">Преглед на поръчки</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //banner-2 -->
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+        </div>
+    </div>
+
+    @if(Model.Count == 0)
+    {
+        <p>
+            Нямате заявени поръчки.
+        </p>
+    }
+    else
+    {
+        <div class="privacy py-5">
+            <div class="container py-md-5 py-4">
+                <div class="checkout-right">
+                    <h4 class="mb-sm-4 mb-3">
+                        Вие имате:
+                        <span>@Model.Count поръчки</span>
+                    </h4>
+                    <div class="table-responsive">
+                        <table class="timetable_sub">
+                            <thead>
+                                <tr>
+                                    <th>Номер на поръчка</th>
+                                    <th>Дата на регистрация</th>
+                                    <th>Цена</th>
+                                    <th>Статус</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.OrderNum
+                                        </td>
+
+                                        <td>
+                                            @item.DateOrdered
+                                        </td>
+
+                                        <td>
+                                            @item.OrderTotalPrice
+                                        </td>
+
+                                        <td>
+                                            @item.OrderStatus
+                                        </td>
+                                        <td>
+                                            @if(item.OrderStatus != MobilePhonesWebsite.Enumerators.OrderEnum.OrderStatusEnum.Отменена)
+                                            {
+                                                <a class="btn btn-success m-1" asp-controller="Products" asp-action="CheckOrder" asp-route-id="@item.Id"> Прегледай </a>
+                                                @if (item.OrderStatus == MobilePhonesWebsite.Enumerators.OrderEnum.OrderStatusEnum.Предстояща)
+                                                {
+                                                    <a class="btn btn-danger m-1" onclick="confirmCancelOrder(@item.Id)"> Откажи </a>
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    <!-- checkout page -->
+    
+
+</body>
+</html>

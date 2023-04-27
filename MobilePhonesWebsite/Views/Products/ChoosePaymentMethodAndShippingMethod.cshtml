@@ -1,0 +1,41 @@
+﻿@using static MobilePhonesWebsite.Enumerators.OrderEnum;
+@model MobilePhonesWebsite.ViewModels.OrderVM.ChoosePaymentAndShippingMethodVM
+@{
+    ViewBag.Title = "Place Order";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="checkout-left" style="margin: 2%">
+        <div class="address_form_agile mt-sm-5 mt-4">
+            <h4 class="mb-sm-4 mb-3">Детайли на поръчка</h4>
+            <form asp-action="ChoosePaymentMethodAndShippingMethod" asp-controller="Products" method="post" class="creditly-card-form agileinfo_form">
+
+                <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="information-wrapper">
+                        <div class="first-row">
+                            <div class="controls form-group">
+                                <label for="ShippingMethod">Начин на доставка(При експресна доставка се начисляват 10лв. над посочената долу сума!)</label>
+                                <select asp-for="ShippingMethod" asp-items="Html.GetEnumSelectList<ShippingMethod>().Select(x => new SelectListItem { Text = x.Text.Replace('_', ' '), Value = x.Value })"></select>
+                            </div>
+                            <div class="controls form-group">
+                                <label for="ShippingMethod">Начин на разплащане</label>
+                                <select asp-for="PaymentMethod" asp-items="Html.GetEnumSelectList<PaymentMethod>().Select(x => new SelectListItem { Text = x.Text.Replace('_', ' '), Value = x.Value })"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="submit check_out btn" type="submit">Напред</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

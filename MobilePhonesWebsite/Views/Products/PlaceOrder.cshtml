@@ -1,0 +1,115 @@
+﻿@using static MobilePhonesWebsite.Enumerators.OrderEnum;
+@model MobilePhonesWebsite.ViewModels.OrderVM.AddOrderVM;
+@{
+    ViewBag.Title = "Place Order";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Electronics Mart - Ecommerce Category Bootstrap Responsive Web Template | Order </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <div class="checkout-left" style="margin: 2%">
+        <div class="address_form_agile mt-sm-5 mt-4">
+            <h4 class="mb-sm-4 mb-3">Детайли на поръчка</h4>
+            <form asp-action="PlaceOrder" asp-controller="Products" method="post" class="creditly-card-form agileinfo_form">
+
+                <input asp-for="UserId" value="@Model.UserId" type="hidden" />
+                <input asp-for="ProductsId" value="@Model.ProductsId" type="hidden" />
+                <input asp-for="ProductsTypes" value="@Model.ProductsTypes" type="hidden" />
+                <input asp-for="ProductsQuantities" value="@Model.ProductsQuantities" type="hidden" />
+                <input asp-for="OrderTotalPrice" value="@Model.OrderTotalPrice" type="hidden" />
+
+                <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="information-wrapper">
+                        <div class="first-row">
+                            <div class="controls form-group">
+                                <input class="billing-address-name form-control" type="text" asp-for="FirstAndLastName"
+                                       placeholder="Име и Фамилия" required="">
+                            </div>
+                            <div class="w3_agileits_card_number_grids">
+                                <div class="w3_agileits_card_number_grid_left form-group">
+                                    <div class="controls">
+                                        <input type="text" class="form-control" placeholder="Телефонен номер"
+                                               asp-for="PhoneNumber" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="controls form-group">
+                                <input asp-for="ShippingCity" type="text" class="form-control" placeholder="Населено място"
+                                       required="">
+                            </div>
+                            <div class="controls form-group">
+                                <input asp-for="ShippingAddress" type="text" class="form-control" placeholder="Адрес(квартал, улица, номер на улица)"
+                                       required="">
+                            </div>
+                            <div class="controls form-group">
+                                <p class="form-control" id="TotalPrice"> @string.Concat($"Дължима сума: {Model.OrderTotalPrice} лв.") </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @if(Model.PaymentMethod == PaymentMethod.Наложен_платеж)
+            {
+                <button class="submit check_out btn"> Напред </button>
+            }
+            else
+            {
+                <button class="submit check_out btn" id="paypal-btn-checkout"></button>
+            }
+
+        </div>
+    </div>
+</body>
+<script src="~/js/user/payment.js"></script>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<script>
+    paypal.Button.render({
+        //Configure environment
+        env: 'sandbox',
+        client: {
+            sandbox: 'AREQho9RM5par2S-VbcK4lMtXTsNcuKOUanA6w06sjea7nsRdOLPNVm4CQUL8k-X2iEWL3SkKHbQVoal'
+        },
+        //Customize button
+        locale: 'en_US',
+        style: {
+            size: 'medium',
+            color: 'silver',
+            shape: 'pill'
+        },
+        commit: true,
+        //Set up a payment
+        payment: function (data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                    amount: {
+                        total: '@Model.OrderTotalPrice',
+                        currency: 'EUR'
+                    }
+                }]
+            });
+        },
+        //Execute the payment
+        onAuthorize: function (data, actions) {
+            return actions.payment.execute().then(function () {
+                var url = '@Url.Action("OrderPlaced", "Products", new { })';
+                window.location.href = url;
+            });
+        },
+        //Handle payment errors
+        onError: function (err) {
+            var url = '@Url.Action("OrderError", "Products", new { })';
+            window.location.href = url;
+        }
+    }, '#paypal-btn-checkout');
+</script>
+</html>

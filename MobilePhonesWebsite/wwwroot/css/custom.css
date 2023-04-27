@@ -1,0 +1,12 @@
+
+.row-without-wrap {
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media(max-width: 768px) {
+    .create {
+        max-width: 40%;
+    }
+}

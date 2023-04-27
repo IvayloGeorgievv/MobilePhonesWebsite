@@ -1,0 +1,58 @@
+﻿@using MobilePhonesWebsite.Repository
+@using MobilePhonesWebsite.Models
+@model MobilePhonesWebsite.ViewModels.MobilePhoneVM.DisplayMobilePhoneVM
+@{
+    ViewBag.Title = "Mobile phones List";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="header" style="margin-top:5%; margin-left:7%">Мобилни устройства</h1>
+    <br />
+    <div class="col-3 text-right">
+        <a id="create" class="btn btn-primary w-75" asp-controller="Admin" asp-action="CreateMobilePhone" style="margin-bottom: 8%">Добави нов</a>
+    </div>
+    <div class="table-responsive" style="margin-bottom:5%">
+        <table class="timetable_sub">
+            <tr>
+                <th>Марка</th>
+                <th>Модел</th>
+                <th>Цена</th>
+                <th>Добавен на</th>
+                <th>Действия</th>
+            </tr>
+
+            @foreach (var item in Model.MobilePhones)
+            {
+                <tr>
+                    <td>
+                        @item.Brand
+                    </td>
+
+                    <td>
+                        @item.Model
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.DateAdded
+                    </td>
+
+                    <td>
+                        <a class="btn btn-success m-1" asp-controller="Admin" asp-action="UpdateMobilePhone" asp-route-id="@item.Id"> Промени </a>
+                        <a class="btn btn-danger m-1" asp-controller="Admin" asp-action="DeleteMobilePhone" asp-route-id="@item.Id" onclick="return confirm('Наистина ли искате да мреханете този продукт?')"> Изтрий </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

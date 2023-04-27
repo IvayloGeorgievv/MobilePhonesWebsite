@@ -1,0 +1,270 @@
+﻿@using static MobilePhonesWebsite.Enumerators.SharedEnum;
+@using static MobilePhonesWebsite.Enumerators.MobilePhoneEnum;
+@model MobilePhonesWebsite.ViewModels.MobilePhoneVM.CreateMobilePhoneVM
+@{
+    ViewBag.Title = "Add mobile phone";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin/CreateEditForm.css"/>
+</head>
+<body>
+    <div class="column-form" style="margin-top:3%">
+        <h1 style="margin-bottom:3%">Добави мобилно устройство</h1>
+        <form id="Form" class="Form" action="/Admin/CreateMobilePhone" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <input type="hidden" id="isBrandValid" value="" />
+                <input type="hidden" id="isModelValid" value="" />
+                <input type="hidden" id="isBatteryLifeValid" value="" />
+                <input type="hidden" id="isPhoneWeightValid" value="" />
+                <input type="hidden" id="isPhoneHeightValid" value="" />
+                <input type="hidden" id="isPhoneWidthValid" value="" />
+                <input type="hidden" id="isPhoneThicknessValid" value="" />
+                <input type="hidden" id="isDisplaySizeValid" value="" />
+                <input type="hidden" id="isDisplayTechnologyValid" value="" />
+                <input type="hidden" id="isDisplayResolutionValid" value="" />
+                <input type="hidden" id="isProcessorFrequencyValid" value="" />
+                <input type="hidden" id="isMainRearCameraValid" value="" />
+                <input type="hidden" id="isRearCameraValid" value="" />
+                <input type="hidden" id="isFrontCameraValid" value="" />
+                <input type="hidden" id="isOperatingMemoryValid" value="" />
+                <input type="hidden" id="isStorageSpaceValid" value="" />
+                <input type="hidden" id="isPriceValid" value="" />
+
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Brand">Марка</label>
+                        <input asp-for="MobilePhone.Brand" type="text" id="Brand" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Model">Модел</label>
+                        <input asp-for="MobilePhone.Model" type="text" id="Model" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="BatteryLife">Капацитет на батерия(в Mah)</label>
+                        <input asp-for="MobilePhone.BatteryLife" type="number" id="BatteryLife" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="PhoneWeight">Тегло(в грамове)</label>
+                        <input asp-for="MobilePhone.Weight" type="number" id="Weight" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="SimCard">SIM карта</label>
+                        <select asp-for="MobilePhone.SIMCard" class="form-control" asp-items="Html.GetEnumSelectList<SIMCardType>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Colour">Цвят</label>
+                        <select asp-for="MobilePhone.Colour" class="form-control" asp-items="Html.GetEnumSelectList<Colour>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <h2>Размери</h2>
+            <h3 style="font-size: 15px">Всички размери са в милиметри!</h3>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="PhoneHeight">Височина</label>
+                        <input asp-for="PhoneHeight" type="number" id="Height" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="PhoneWidth">Ширина</label>
+                        <input asp-for="PhoneWidth" type="number" id="Width" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="PhoneThickness">Дебелина</label>
+                        <input asp-for="PhoneThickness" type="number" id="Thickness" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <h2>Дисплей</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="DisplaySize">Размер на дисплей(в Инчове)</label>
+                        <input asp-for="MobilePhoneDisplay.DisplaySize" id="DisplaySize" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="DisplayTechnology">Технология на дисплей</label>
+                        <input asp-for="MobilePhoneDisplay.Technology" type="text" id="DisplayTechnology" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="DisplayResolution">Резолюция на дисплей</label>
+                        <input asp-for="MobilePhoneDisplay.Resolution" type="text" id="DisplayResolution" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <h2>Процесор</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="ProcessorType">Вид процесор</label>
+                        <select asp-for="MobilePhoneProcessor.ProcessorType" class="form-control" asp-items="Html.GetEnumSelectList<CPUType>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="ProcessorFrequency">Честота на процесор</label>
+                        <input asp-for="MobilePhoneProcessor.ProcessorFrequency" type="text" id="ProcessorFrequency" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <h2>Камера</h2>
+            <h3 style="font-size: 15px">(Ако има повече от 1 допълнителна задна камера разделете стойностите с '+')</h3>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="MainRearCamera">Задна основна камера(в MP)</label>
+                        <input asp-for="MobilePhoneCamera.MainRearCamera" type="number" id="MainRearCamera" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="RearCamera">Задна камера(в MP)</label>
+                        <input asp-for="MobilePhoneCamera.RearCamera" type="text" id="RearCamera" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="FrontCamera">Предна камера(в MP)</label>
+                        <input asp-for="MobilePhoneCamera.FrontCamera" type="number" id="FrontCamera" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <h2>Памет</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="OperatingMemory">Размер на оперативна памет</label>
+                        <input asp-for="MobilePhone.OperatingMemory" type="number" id="OperatingMemory" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="StorageSpace">Размер на вътрешна памет</label>
+                        <input asp-for="MobilePhone.StorageSpace" type="number" id="StorageSpace" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <h2 style="ali">Допълнителни функции</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="SecondSIM">Втора SIM карта</label>
+                        <select asp-for="MobilePhoneAdditionalFunction.SecondSIM" class="form-control" asp-items="Html.GetEnumSelectList<SecondSIMCardType>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="HeadphonesJack">3.5мм жак за слушалки</label>
+                        <select asp-for="MobilePhoneAdditionalFunction.HeadphonesJack" class="form-control" asp-items="Html.GetEnumSelectList<AdditionalFunctions>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="MemoryCard">Карта памет</label>
+                        <select asp-for="MobilePhoneAdditionalFunction.MemoryCard" class="form-control" asp-items="Html.GetEnumSelectList<AdditionalFunctions>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="FingerPrintReader">Четец на пръстов отпечатък</label>
+                        <select asp-for="MobilePhoneAdditionalFunction.FingerPrintReader" class="form-control" asp-items="Html.GetEnumSelectList<AdditionalFunctions>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="FacialRecognition">Лицево разпознаване</label>
+                        <select asp-for="MobilePhoneAdditionalFunction.FacialRecognition" class="form-control" asp-items="Html.GetEnumSelectList<AdditionalFunctions>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="NFC">Комуникация в близко поле(NFC)</label>
+                        <select asp-for="MobilePhoneAdditionalFunction.NFC" class="form-control" asp-items="Html.GetEnumSelectList<AdditionalFunctions>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="PhoneWeight">Цена</label>
+                        <input asp-for="MobilePhone.Price" type="number" id="Price" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column" style="margin-top:2%">
+                    <div class="Form-group input-control">
+                        <input type="file" name="Image1" id="file" accept=".png" placeholder="PhoneCase Image" />
+                    </div>
+                </div>
+                <div class="column" style="margin-top:2%">
+                    <div class="Form-group input-control">
+                        <input type="file" name="Image2" id="file" accept=".png" placeholder="PhoneCase Image" />
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="button" style="margin-bottom:2%">Добави</button>
+            <a href="MobilePhonesList">Назад</a>
+        </form>
+        <br />
+    </div>
+</body>
+<script src="~/js/admin/ValidateMobilePhone.js"></script>
+</html> 

@@ -1,0 +1,105 @@
+﻿@model MobilePhonesWebsite.ViewModels.SmartwatchVM.CreateSmartwatchVM
+@using static MobilePhonesWebsite.Enumerators.SharedEnum
+@{
+    ViewBag.Title = "Add smartwatch";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin/CreateEditForm.css">
+</head>
+<body>
+    <div class="column-form" style="margin-top:3%">
+        <h1 style="margin-bottom:3%">Добави smart-часовник</h1>
+        <form id="Form" class="Form" asp-action="CreateSmartwatch" asp-controller="Admin" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <input type="hidden" id="isBrandValid" value="" />
+                <input type="hidden" id="isModelValid" value="" />
+                <input type="hidden" id="isBatteryLifeValid" value="" />
+                <input type="hidden" id="isDisplaySizeValid" value="" />
+                <input type="hidden" id="isDisplayTechnologyValid" value="" />
+                <input type="hidden" id="isWeightValid" value="" />
+                <input type="hidden" id="isPriceValid" value="" />
+
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Brand">Марка</label>
+                        <input asp-for="Brand" id="Brand" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Model">Модел</label>
+                        <input asp-for="Model" id="Model" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="BatteryLife">Капацитет на батерия(в Mah)</label>
+                        <input asp-for="BatteryLife" id="BatteryLife" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="DisplaySize">Размер на дисплей(в инчове)</label>
+                        <input asp-for="DisplaySize" id="DisplaySize" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="DisplayTechnology">Технология на дисплей</label>
+                        <input asp-for="DisplayTechnology" id="DisplayTechnology" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Weight">Тегло</label>
+                        <input asp-for="Weight" id="Weight" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Colour">Цвят</label>
+                        <select asp-for="Colour" class="form-control" asp-items="Html.GetEnumSelectList<Colour>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Price">Цена</label>
+                        <input asp-for="Price" id="Price" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <input type="file" name="Image" id="file" accept=".png" placeholder="PhoneCase Image" />
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="button">Добави</button>
+            <a href="SmartwatchList">Назад</a>
+        </form>
+        <br />
+    </div>
+</body>
+<script src="~/js/admin/ValidateSmartwatch.js"></script>
+</html>

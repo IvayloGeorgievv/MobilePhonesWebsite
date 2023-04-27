@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Smartwatches";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    <style>
+        .successHeader {
+            color: #FF9494;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .successText {
+            color: #404F5E;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .check {
+            color: #9ABC66;
+            font-size: 100px;
+            line-height: 200px;
+            margin-left: -15px;
+        }
+
+        .card {
+            text-align: center;
+            background: white;
+            padding: 60px;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #C8D0D8;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        .successContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="successContainer">
+        <div class="card" style="">
+            <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+                <i class="check">✕</i>
+            </div>
+            <h1 class="successHeader">Възникна проблем</h1>
+            <p class="successText">Грешка! Вашата поръчка не беше заявена! Опитайте отново по-късно!<br /></p>
+            <a href="/Home/Index">Назад към Начало</a>
+        </div>
+    </div>
+
+</body>
+</html>

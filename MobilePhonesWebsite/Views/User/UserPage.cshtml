@@ -1,0 +1,19 @@
+﻿@model MobilePhonesWebsite.ViewModels.UserVM.UserPageVM
+@{
+    ViewBag.Title = "User page";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <h1 style="text-align:center; margin-top:5%; margin-bottom: 3%"> Здравей, @Model.Username </h1>
+    <form asp-action="UpdateUser" asp-controller="User" method="get" asp-route-id ="@Model.Id">
+    <button type="submit" class="btn btn-style mt-3" style="margin:auto; display:block ; margin-bottom: 3%">Промени акаунт</button>
+    </form>
+    <form asp-action="UserOrdersList" asp-controller="User" method="get">
+    <button type="submit" class="btn btn-style mt-3" style="margin:auto; display:block ; margin-bottom: 3%">Мои поръчки</button>
+    </form>
+</body>
+</html>

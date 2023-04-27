@@ -1,0 +1,41 @@
+﻿@model MobilePhonesWebsite.ViewModels.UserVM.LoginUserVM
+@{
+    ViewBag.Title = "Вход";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/user/login-form.css" type="text/css" runat="server">
+</head>
+<body>
+    <div class="container" style="margin-bottom:5%">
+        <form id="form" method="post" asp-action="LoginPage" asp-controller="User">
+            <h1>Вход</h1>
+            <div class="input-control">
+                <label for="username">Email</label>
+                <input asp-for="Email" id="username" type="text">
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="input-control">
+                <label for="password">Парола</label>
+                <input id="password" name="password" type="password">
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <button type="submit">Вход</button>
+            <div class="container signin">
+                <p>Нямаш акаунт? <a href="~/User/RegisterPage">Регистрирай се</a></p>
+            </div>
+        </form>
+
+    </div>
+    <br />
+</body>
+</html>

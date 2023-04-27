@@ -1,0 +1,140 @@
+﻿@model MobilePhonesWebsite.ViewModels.MobilePhoneVM.SingleMobilePhoneVM;
+@{
+    ViewBag.Title = "Mobile phone";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <!-- Single Page -->
+    <div class="banner-bootom-w3-agileits py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 single-right-left ">
+                    <div class="grid images_3_of_2">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li data-thumb="@Url.Action("GetFirstImageMobilePhones", "Products", new {id = Model.phone.Id })">
+                                    <div class="thumb-image">
+                                        <img src="@Url.Action("GetFirstImageMobilePhones", "Products", new {id = Model.phone.Id })" data-imagezoom="true" class="img-fluid" alt="">
+                                    </div>
+                                </li>
+                                <li data-thumb="@Url.Action("GetSecondImageMobilePhones", "Products", new {id = Model.phone.Id })">
+                                    <div class="thumb-image">
+                                        <img src="@Url.Action("GetSecondImageMobilePhones", "Products", new {id = Model.phone.Id })" data-imagezoom="true" class="img-fluid" alt="">
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                    <h3 class="mb-3">@string.Concat(Model.phone.Brand," " ,Model.phone.Model)</h3>
+                    <p class="mb-3">
+                        <span class="item_price">@string.Concat(Model.phone.Price, " лв.")</span>
+                    </p>
+                    <div class="product-single-w3l">
+                        <div class="row-single">
+
+                            <div class="column-single">
+                                <p class="my-3">
+                                    Характеристики
+                                    <ul>
+                                        <li class="mb-1">
+                                            @string.Concat("Размери: ",Model.phone.Size)
+                                        </li>
+                                        <li class="mb-1">
+                                            @string.Concat("Тегло: ",Model.phone.Weight, " гр.")
+                                        </li>
+                                        <li class="mb-1">
+                                            @string.Concat("Цвят: ",Model.phone.Colour)
+                                        </li>
+                                        <li class="mb-1">
+                                            @string.Concat("Живот на батерия: ",Model.phone.BatteryLife, " Mah")
+                                        </li>
+                                        <li class="mb-1">
+                                            @string.Concat("Операционна памет: ",Model.phone.OperatingMemory, "GB")
+                                        </li>
+                                        <li class="mb-1">
+                                            @string.Concat("Вътрешно пространство: ",Model.phone.StorageSpace, " GB")
+                                        </li>
+                                    </ul>
+                                <p class="my-3">
+                                    Характеристики на процесор
+                                    <ul>
+                                        <li class="mb-1">
+                                                @string.Concat("Тип: ",Model.processor.ProcessorType)
+                                        </li>
+                                        <li class="mb-1">
+                                                @string.Concat("Честота: ",Model.processor.ProcessorFrequency)
+                                        </li>
+
+                                    </ul>
+                            </div>
+                            <div class="column-single">
+                                <p class="my-3">
+                                    Характеристики на дисплей
+                                    <ul>
+                                        <li class="mb-1">
+                                            @string.Concat("Размери: ",Model.display.DisplaySize, " инча")
+                                        </li>
+                                        <li class="mb-1">
+                                            @string.Concat("Технология: ",Model.display.Technology)
+                                        </li>
+                                        <li class="mb-1">
+                                            @string.Concat("Резолюция: ",Model.display.Resolution, " пиксела")
+                                        </li>
+
+                                    </ul>
+                                <p class="my-3">
+                                    Характеристики на камери
+                                    <ul>
+                                        <li class="mb-1">
+                                                @string.Concat("Основна задна камера: ",Model.camera.MainRearCamera, " MP")
+                                        </li>
+                                        <li class="mb-1">
+                                                @string.Concat("Допълнителни задни камери: ",Model.camera.RearCamera, " MP")
+                                        </li>
+                                        <li class="mb-1">
+                                                @string.Concat("Предна камера: ",Model.camera.FrontCamera, " MP")
+                                        </li>
+
+                                    </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="occasion-cart">
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <div class="row">
+                                <div class="column">
+                                    <button class="btn btn-style btn-style-secondary mt-3"
+                                            onclick="addToCartMobilePhone(@Model.phone.Id)">
+                                        Добави в количка
+                                    </button>
+                                    <div id="Message"></div>
+                                </div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="column">
+                                        <button class="btn btn-style btn-style-secondary mt-3" onclick="addToLikedMobilePhone(@Model.phone.Id)">
+                                            <i class="far fa-heart"></i>
+                                            Добави в харесани продукти
+                                        </button>
+                                    </div>
+                                    <div id="MessageLiked"></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Single Page -->
+
+</body>
+</html>

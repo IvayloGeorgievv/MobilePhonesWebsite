@@ -1,0 +1,212 @@
+﻿@model List<dynamic>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+
+    <!-- banner -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <!-- Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item item2">
+                <div class="banner-style d-flex align-items-center">
+                    <div class="container">
+                        <div class="w3l-space-banner">
+                            <div class="carousel-caption-banner" style="max-width:500px">
+                               
+                                <h3 class="mt-2">Голям набор от мобилни устройства!</h3>
+                                <a class="btn btn-style mt-4" href="~/Products/MobilePhonesPage">Прегледай </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item item3">
+                <div class="banner-style d-flex align-items-center">
+                    <div class="container">
+                        <div class="w3l-space-banner">
+                            <div class="carousel-caption-banner" style="max-width:500px">
+                                
+                                <h3 class="mt-2">Смартчасовници на добри цени!</h3>
+                                <a class="btn btn-style mt-4" href="~/Products/SmartwatchesPage">Прегледай</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- //banner -->
+    <!-- top Products -->
+    <div class="ads-grid py-5">
+        <div class="container py-md-5 py-4">
+            <!-- tittle heading -->
+            <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+                <span class="font-weight-normal">Нашите</span> Нови Продукти
+            </h3>
+            <!-- //tittle heading -->
+            <div class="row">
+
+                <!-- product left -->
+                <div class="agileinfo-ads-display col-lg-11 order-lg-last order-first">
+                    <div class="wrapper">
+                        <div class="product-sec1 px-lg-4 mb-5">
+                            <div class="row">
+                                <div class="row">
+                                    @foreach (var item in Model)
+                                    {
+                                        @if (item is MobilePhone)
+                                        {
+                                            <div class="col-md-4 product-men" style="margin-bottom:30px;flex: 1 0 25%;">
+                                                <div class="men-pro-item simpleCart_shelfItem">
+                                                    <div class="men-thumb-item text-center">
+                                                        <img src="@Url.Action("GetFirstImageMobilePhones", "Products", new {id = item.Id })" alt="" class="img-fluid">
+                                                        <div class="men-cart-pro">
+                                                            <div class="inner-men-cart-pro">
+                                                                <a href="/Products/SingleMobilePhonePage/@item.Id" class="link-product-add-cart">Прегледай</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product text-center mt-2">
+                                                        <h4 class="pt-1">
+                                                            <a>@string.Concat(item.Brand, " ", item.Model)</a>
+                                                        </h4>
+                                                        <div class="info-product-price">
+                                                            <span class="item_price">@string.Concat(item.Price, "лв.")</span>
+                                                        </div>
+                                                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                            <form asp-action="AddToCartMobilePhone" asp-controller="Products" asp-route-id="@item.Id">
+                                                                <button type="submit"
+                                                                class="btn btn-style btn-style-secondary mt-3">
+                                                                    Добави в количка
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (item is WiredHeadphones)
+                                        {
+                                            <div class="col-md-4 product-men" style="margin-bottom:30px;flex: 1 0 25%;">
+                                                <div class="men-pro-item simpleCart_shelfItem">
+                                                    <div class="men-thumb-item text-center">
+                                                        <img src="@Url.Action("GetImageWiredHeadphones", "Products", new {id = item.Id })" alt="" class="img-fluid">
+                                                        <div class="men-cart-pro">
+                                                            <div class="inner-men-cart-pro">
+                                                                <a href="/Products/SingleWiredHeadphonesPage/@item.Id" class="link-product-add-cart">Прегледай</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product text-center mt-2">
+                                                        <h4 class="pt-1">
+                                                            <a>@string.Concat(item.Brand, " ", item.Model)</a>
+                                                        </h4>
+                                                        <div class="info-product-price">
+                                                            <span class="item_price">@string.Concat(item.Price, "лв.")</span>
+                                                        </div>
+                                                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                            <form asp-action="AddToCartWiredHeadphones" asp-controller="Products" asp-route-id="@item.Id">
+                                                                <button type="submit"
+                                                                class="btn btn-style btn-style-secondary mt-3">
+                                                                    Добави в количка
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (item is WirelessHeadphones)
+                                        {
+                                            <div class="col-md-4 product-men" style="margin-bottom:30px;flex: 1 0 25%;">
+                                                <div class="men-pro-item simpleCart_shelfItem">
+                                                    <div class="men-thumb-item text-center">
+                                                        <img src="@Url.Action("GetImageWirelessHeadphones", "Products", new {id = item.Id })" alt="" class="img-fluid">
+                                                        <div class="men-cart-pro">
+                                                            <div class="inner-men-cart-pro">
+                                                                <a href="/Products/SingleWirelessHeadphonesPage/@item.Id" class="link-product-add-cart">Прегледай</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product text-center mt-2">
+                                                        <h4 class="pt-1">
+                                                            <a>@string.Concat(item.Brand, " ", item.Model)</a>
+                                                        </h4>
+                                                        <div class="info-product-price">
+                                                            <span class="item_price">@string.Concat(item.Price, "лв.")</span>
+                                                        </div>
+                                                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                            <form asp-action="AddToCartWirelessHeadphones" asp-controller="Products" asp-route-id="@item.Id">
+                                                                <button type="submit"
+                                                                class="btn btn-style btn-style-secondary mt-3">
+                                                                    Добави в количка
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (item is Smartwatch)
+                                        {
+                                            <div class="col-md-4 product-men" style="margin-bottom:30px;flex: 1 0 25%;">
+                                                <div class="men-pro-item simpleCart_shelfItem">
+                                                    <div class="men-thumb-item text-center">
+                                                        <img src="@Url.Action("GetImageSmartwatch", "Products", new {id = item.Id })" alt="" class="img-fluid">
+                                                        <div class="men-cart-pro">
+                                                            <div class="inner-men-cart-pro">
+                                                                <a href="/Products/SingleSmartwatchPage/@item.Id" class="link-product-add-cart">Прегледай</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product text-center mt-2">
+                                                        <h4 class="pt-1">
+                                                            <a>@string.Concat(item.Brand, " ", item.Model)</a>
+                                                        </h4>
+                                                        <div class="info-product-price">
+                                                            <span class="item_price">@string.Concat(item.Price, "лв.")</span>
+                                                        </div>
+                                                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                            <form asp-action="AddToCartSmartwatch" asp-controller="Products" asp-route-id="@item.Id">
+                                                                <button type="submit"
+                                                                class="btn btn-style btn-style-secondary mt-3">
+                                                                    Добави в количка
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

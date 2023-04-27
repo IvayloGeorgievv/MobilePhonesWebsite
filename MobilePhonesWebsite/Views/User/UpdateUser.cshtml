@@ -1,0 +1,68 @@
+﻿@model MobilePhonesWebsite.ViewModels.UserVM.EditUserVM
+@{
+    ViewBag.Title = "Update user";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin/CreateEditForm.css">
+</head>
+<body>
+    <div class="column_form">
+        <h1>Промени своите данни</h1>
+        <form id="Form" class="Form" asp-action="UpdateUser" asp-controller="User" method="post">
+            <input asp-for="Id" value="@Model.Id" type="hidden" />
+            <div class="row">
+                <input type="hidden" id="isUsernameValid" value="" />
+                <input type="hidden" id="isEmailValid" value="" />
+                <input type="hidden" id="isPasswordValid" value=""
+                <input type="hidden" id="isRepeatPasswordValid" value="" />
+
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="FirstName">Първо име</label>
+                        <input asp-for="Username" value="@Model.Username" id="firstName"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Email">Email</label>
+                        <input asp-for="Email" value="@Model.Email" id="email"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Password">Парола</label>
+                        <input asp-for="Password" id="Password" type="password" id="password"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Password">Повтори парола</label>
+                        <input id="RepeatPassword" type="password" id="repeatPassword"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="button" style="margin-bottom:2%">Потвърди</button>
+            
+        </form>
+        <a class="button" href="~/User/UserPage" style="margin-left:85%; margin-bottom:2%">Назад</a>
+        <br />
+    </div>
+</body>
+<script src="~/js/user/ValidateUserUpdate.js"></script>
+</html>

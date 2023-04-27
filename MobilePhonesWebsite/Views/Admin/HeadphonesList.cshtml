@@ -1,0 +1,126 @@
+﻿@using MobilePhonesWebsite.Repository
+@using MobilePhonesWebsite.Models
+@model MobilePhonesWebsite.ViewModels.HeadphonesVM.DisplayHeadphonesVM
+@{
+    ViewBag.Title = "Headphones List";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 class="header" style="margin-top:5%; margin-left:7%">Слушалки</h1>
+    <br />
+    <div class="create col-3 text-right">
+        <button data-toggle="modal" data-target="#createChoice" class="btn btn-primary w-75" style="margin-bottom: 8%">Добави нови</button>
+
+        <div class="modal fade" id="createChoice" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center">Изберете какъв тип слушалки искате да добавите</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row-buttons">
+                            <div class="column-buttons">
+                                <a id="create" class="btn btn-primary w-48" asp-controller="Admin" asp-action="CreateWiredHeadphones" style="margin-bottom: 5%">Жични</a>
+                            </div>
+                            <div class="column-buttons">
+                                <a id="create" class="btn btn-primary w-48" asp-controller="Admin" asp-action="CreateWirelessHeadphones">Безжични</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive" style="margin-bottom:5%">
+        <table class="timetable_sub">
+            <tr>
+                <th>Марка</th>
+                <th>Модел</th>
+                <th>Свързаност</th>
+                <th>Тип</th>
+                <th>Цена</th>
+                <th>Добавен на</th>
+                <th>Действия</th>
+            </tr>
+
+            @foreach (var item in Model.WiredHeadphones)
+            {
+                <tr>
+                    <td>
+                        @item.Brand
+                    </td>
+
+                    <td>
+                        @item.Model
+                    </td>
+
+                    <td>
+                        @item.Connectivity
+                    </td>
+
+                    <td>
+                        @item.Type
+                    </td>
+
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.DateAdded
+                    </td>
+                    <td>
+                        <a class="btn btn-success m-1" asp-controller="Admin" asp-action="UpdateWiredHeadphones" asp-route-id="@item.Id"> Промени </a>
+                        <a class="btn btn-danger m-1" asp-controller="Admin" asp-action="DeleteWiredHeadphones" asp-route-id="@item.Id" onclick="return confirm('Наистина ли искате да мреханете този продукт?')"> Изтрий </a>
+                    </td>
+                </tr>
+            }
+            @foreach (var item in Model.WirelessHeadphones)
+            {
+                <tr>
+                    <td>
+                        @item.Brand
+                    </td>
+
+                    <td>
+                        @item.Model
+                    </td>
+
+                    <td>
+                        @item.Connectivity
+                    </td>
+
+                    <td>
+                        @item.Type
+                    </td>
+
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.DateAdded
+                    </td>
+                    <td>
+                        <a class="btn btn-success m-1" asp-controller="Admin" asp-action="UpdateWirelessHeadphones" asp-route-id="@item.Id"> Промени </a>
+                        <a class="btn btn-danger m-1" asp-controller="Admin" asp-action="DeleteWirelessHeadphones" asp-route-id="@item.Id" onclick="return confirm('Наистина ли искате да мреханете този продукт?')"> Изтрий </a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</body>
+
+</html>

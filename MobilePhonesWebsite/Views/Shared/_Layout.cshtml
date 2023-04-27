@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Electronics Mart - Ecommerce Category Bootstrap Responsive Web Template | Home </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/style.css"/>
+    <link rel="stylesheet" href="~/css/fontawesome-all.css" />
+    <link rel="stylesheet" href="~/css/popuo-box.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="~/css/creditly.css" />
+    <link rel="stylesheet" href="~/css/easy-responsive-tabs.css" />
+    <link rel="stylesheet" href="~/css/flexslider.css" />
+    <link rel="stylesheet" href="~/css/singlepage.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="~/css/priceSlider.css" />
+</head>
+<!-- Button trigger modal(select-location) -->
+<!-- //shop locator (popup) -->
+<!-- modals -->
+<!-- //top-header -->
+<!-- header-bottom-->
+<div class="header-bot my-md-4 my-3" id="site-header" style="margin-right:10%">
+    <div class="container">
+        <div class="row header-bot_inner_wthreeinfo_header_mid align-items-center" >
+            <!-- logo -->
+            <div class="col-lg-3 col-md-4 logo_agile">
+                <h1>
+                    <a href="~/Home/Index"><span>M</span>obile <span>M</span>art</a>
+                </h1>
+            </div>
+            <!-- //logo -->
+            <!-- header-bot -->
+            <div class="col-lg-9 col-md-8 header">
+                <div class="row">
+                    <!-- search -->
+                    <div class="col-lg-9 col-sm-8 agileits_search" style="margin-top:20px">
+                        <form class="form-inline" action="~/Products/Search" method="post" style="max-width:600px;">
+                            <input class="form-control" type="search"
+                                   placeholder="Търсене" aria-label="Search" name="searchWord" required="">
+                            <button class="btn" type="submit">
+                                <i class="fa fa-search"
+                                   aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- //search -->
+                    <!-- cart details -->
+                    <div class="col-lg-3 col-sm-4 top_nav_right text-center mt-sm-0 mt-2 d-flex align-items-center justify-content-between">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <div class="cart-store">
+                                <!-- toggle switch for light and dark theme -->
+                                <div class="cont-ser-position" style="margin-top:25px">
+                                    <nav class="navigation">
+                                        <div class="theme-switch-wrapper">
+                                            <label class="theme-switch" for="checkbox">
+                                                <input type="checkbox" id="checkbox" style="margin-right:3px; ">
+                                                <div class="mode-container">
+                                                    <i class="gg-sun"></i>
+                                                    <i class="gg-moon"></i>
+                                                </div>
+                                                <a style="margin-right:3px">
+                                                    Тема
+                                                </a>
+
+                                            </label>
+
+                                        </div>
+                                    </nav>
+                                </div>
+                                <!-- //toggle switch for light and dark theme -->
+                            </div>
+                            <div class="cart-store" style="margin-left: 10px; margin-right: 5px; margin-top:25px">
+                                <a href="~/Products/Cart"><i class="fas fa-shopping-cart"></i>Количка</a>
+                            </div>
+                            <div class="cart-store" style="margin-left: 10px; margin-right: 5px; margin-top:25px">
+                                <a href="~/User/LoginPage"><i class="fas fa-sign-in-alt mr-1"></i>Вход</a>
+                            </div>
+                            <div class="cart-store" style="margin-left: 10px; margin-right: 5px; margin-top:25px">
+                                <a href="~/User/RegisterPage"><i class="fas fa-sign-in-alt mr-1"></i>Регистрация</a>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="cart-store">
+                                <!-- toggle switch for light and dark theme -->
+                                <div class="cont-ser-position">
+                                    <nav class="navigation">
+                                        <div class="theme-switch-wrapper">
+                                            <label class="theme-switch" for="checkbox">
+                                                <input type="checkbox" id="checkbox" style="margin-right:3px; ">
+                                                <div class="mode-container">
+                                                    <i class="gg-sun"></i>
+                                                    <i class="gg-moon"></i>
+                                                </div>
+                                                <a style="margin-right:3px">
+                                                    Тема
+                                                </a>
+
+                                            </label>
+
+                                        </div>
+                                    </nav>
+                                </div>
+                                <!-- //toggle switch for light and dark theme -->
+                            </div>
+                            <div class="cart-store" style="margin-left:7px; margin-right:10px; margin-top:25px">
+                                <a href="~/Products/LikedProducts"><i class="far fa-heart"></i>Харесани продукти</a>
+                            </div>
+                            <div class="cart-store" style="margin-left:7px; margin-right:10px;">
+                                <a href="~/Products/Cart"><i class="fas fa-shopping-cart"></i>Количка</a>
+                            </div>
+                            <div class="cart-store">
+                                <a href="~/User/UserPage">
+                                    <i class="far fa-user"></i>
+                                    <span style="margin-left:3px">@User.Identity.Name</span>
+                                </a>
+                            </div>
+                            <div class="cart-store" style="margin-left:10px">
+                                <a href="~/User/Logout"><i class="fas fa-sign-out-alt mr-1"></i>Изход</a>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- shop locator (popup) -->
+<!-- //header-bottom -->
+<!-- navigation -->
+<div class="navbar-inner">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav text-center ml-auto">
+                    <li class="nav-item  mr-lg-2 mb-lg-0 mb-2">
+                        <a class="nav-link" href="~/Home/Index">
+                            Начало
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Products/MobilePhonesPage">Мобилни устройства</a>
+                    </li>
+                    <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Аксесоари
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="agile_inner_drop_nav_info p-4">
+                                <div class="row">
+                                    <div class="col-sm-6 multi-gd-img">
+                                        <ul class="multi-column-dropdown">
+                                            <li>
+                                                <a href="~/Products/HeadphonesPage">Слушалки</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/Products/SmartwatchesPage">Smart-часовници</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/Products/PhoneCasesPage">Калъфи</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/Products/PhoneProtectorsPage">Протектори за дисплей</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Home/AboutUs">За нас</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+
+                        <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+                            <a class="nav-link dropdown-toggle" href="~/Admin/AdminPanel" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                                Администраторски панел
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="agile_inner_drop_nav_info p-4">
+                                    <div class="row">
+                                        <div class="col-sm-6 multi-gd-img">
+                                            <ul class="multi-column-dropdown">
+                                                <li>
+                                                    <a href="~/Admin/MobilePhonesList">Виж всички мобилни устройства</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="~/Admin/HeadphonesList">Виж всички слушалки</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="~/Admin/SmartwatchList">Виж всички смартчасовници</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="~/Admin/PhoneCaseList">Виж всички калъфи</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="~/Admin/PhoneProtectorList">Виж всички протектори</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="~/Admin/UserList">Виж всички потребители</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+@RenderBody()
+
+
+
+<footer>
+    <!-- footer third section -->
+    <!-- footer third section -->
+    <div class="w3l-middlefooter-sec">
+        <div class="container py-5">
+            <div class="row footer-info w3-agileits-info">
+                <!-- footer categories -->
+                <div class="col-md-3 col-sm-6 footer-grids">
+                    <h3 class="mb-3">Категории</h3>
+                    <ul>
+                        <li class="mb-3">
+                            <a href="~/Products/MobilePhonesPage">Мобилни устройства</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="~/Products/HeadphonesPage">Слушалки</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="~/Products/SmartwatchesPage">Smart-часовници</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="~/Products/PhoneCasesPage">Калъфи</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="~/Products/PhoneProtectorsPage">Протектори</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //footer categories -->
+                <!-- quick links -->
+                <div class="col-md-3 col-sm-6 footer-grids mt-sm-0 mt-4">
+                    <h3 class="mb-3">Информация</h3>
+                    <ul>
+                        <li class="mb-3">
+                            <a href="~/Home/AboutUs">За нас</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 footer-grids mt-md-0 mt-4">
+                    <h3 class="mb-3">Свържете се с нас</h3>
+                    <ul>
+                        <li class="mb-3">
+                            <i class="fas fa-map-marker"></i>бул. „Пещерско шосе“ 26, 4002 ж.к. Младежки хълм, Пловдив
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone"></i><a href="tel:+12 23456790">1234567890</a>
+                        </li>
+                        <li class="mb-3"> 
+                            <i class="fas fa-envelope-open"></i>
+                            <a href="mailto:example@mail.com">mail1@example.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 footer-grids w3l-agileits mt-md-0 mt-4">
+                    <!-- social icons -->
+                    <div class="footer-grids  w3l-socialmk mt-3">
+                        <h3 class="mb-3">Последвайте ни</h3>
+                        <div class="social">
+                            <ul>
+                                <li>
+                                    <a class="icon fb" href="https://www.facebook.com/">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon tw" href="https://twitter.com/">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon gp" href="https://www.instagram.com/">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- //social icons -->
+                </div>
+            </div>
+            <!-- //quick links -->
+        </div>
+    </div>
+    <!-- //footer third section -->
+</footer>
+<!-- js-files -->
+<!-- common jquery plugin -->
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<!-- //common jquery plugin -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
+<!-- //here ends scrolling icon -->
+<!-- js -->
+<script src="~/js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="~/js/move-top.js"></script>
+<script type="text/javascript" src="~/js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<!-- nav smooth scroll -->
+<script>
+    $(document).ready(function () {
+        $(".dropdown").hover(
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                $(this).toggleClass('open');
+            },
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                $(this).toggleClass('open');
+            }
+        );
+    });
+</script>
+<!-- //nav smooth scroll -->
+<!-- quantity -->
+<script>
+    $('.value-plus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) + 1;
+        divUpd.text(newVal);
+    });
+
+    $('.value-minus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) - 1;
+        if (newVal >= 1) divUpd.text(newVal);
+    });
+</script>
+<!--quantity-->
+<script>
+    $(document).ready(function (c) {
+        $('.close').on('click', function (c) {
+            $('.rem').fadeOut('slow', function (c) {
+                $('.rem').remove();
+            });
+        });
+    });
+</script>
+<!-- //quantity -->
+<!-- imagezoom -->
+<script src="/js/imagezoom.js"></script>
+<!-- //imagezoom -->
+<!-- flexslider -->
+<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+
+<script src="~/js/jquery.flexslider.js"></script>
+<script>
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
+</script>
+<!-- //FlexSlider-->
+<!-- theme switch js (light and dark)-->
+<script src="~/js/theme-change.js"></script>
+<script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function () {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function (i, char) {
+                    setTimeout(function () {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function () {
+        // Now to start autoTyping just call the autoType function with the
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.
+        autoType(".type-js", 200);
+    });
+</script>
+<!-- //theme switch js (light and dark)-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- //disable body scroll which navbar is in active -->
+<!--bootstrap-->
+<script src="~/js/bootstrap.min-2.js"></script>
+<!-- //bootstrap-->
+<!-- //Js scripts -->
+<script src="~/js/cart/CartFunctions.js"></script>
+<script src="/js/likedProducts/LikedProductsFunctions.js"></script> 
+</html>
+

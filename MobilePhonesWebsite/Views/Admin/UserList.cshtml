@@ -1,0 +1,54 @@
+﻿@using MobilePhonesWebsite.Repository
+@using MobilePhonesWebsite.Models
+@model MobilePhonesWebsite.ViewModels.UserVM.IndexUserVM
+@{
+    ViewBag.Title = "User List";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="header" style="margin-top:5%; margin-left:7%">Потребители</h1>
+    <br />
+    <div class="col-3 text-right">
+    </div>
+    <br />
+    <div class="table-responsive" style="margin-bottom:5%">
+        <table class="timetable_sub">
+            <tr>
+                <th>Име</th>
+                <th>Имейл</th>
+                <th>Администраторски Права</th>
+                <th>Действия</th>
+            </tr>
+
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @item.Username
+                    </td>
+
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.IsAdmin
+                    </td>
+
+                    <td>
+                        <a class="btn btn-success m-1" asp-controller="Admin" asp-action="UpdateUser" asp-route-id="@item.Id"> Промени </a>
+                        <a class="btn btn-danger m-1" asp-controller="Admin" asp-action="DeleteUser" asp-route-id="@item.Id" onclick="return confirm('Наистина ли искате да премахнете този потребител?')"> Изтрий </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

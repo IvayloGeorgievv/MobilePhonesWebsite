@@ -1,0 +1,94 @@
+﻿@using static MobilePhonesWebsite.Enumerators.SharedEnum;
+@using static MobilePhonesWebsite.Enumerators.HeadphonesEnum
+@model MobilePhonesWebsite.ViewModels.HeadphonesVM.EditWirelessHeadphonesVM
+@{
+    ViewBag.Title = "Update wireless headphones";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin/CreateEditForm.css">
+</head>
+<body>
+    <div class="column-form" style="margin-top:3%">
+        <h1 style="margin-bottom:3%">Промени безжични слушалки</h1>
+        <form id="Form" class="Form" asp-controller="Admin" asp-action="UpdateWirelessHeadphones" method="post">
+
+            <input asp-for="Id" value="@Model.Id" type="hidden" />
+
+            <div class="row">
+                <input type="hidden" id="isBrandValid" value="" />
+                <input type="hidden" id="isModelValid" value="" />
+                <input type="hidden" id="isBatteryValid" value="" />
+                <input type="hidden" id="isPriceValid" value="" />
+
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Brand">Марка</label>
+                        <input asp-for="Brand" value="@Model.Brand" id="Brand"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Model">Модел</label>
+                        <input asp-for="Model" value="@Model.Model" id="Model"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Type">Тип</label>
+                        <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<HeadphonesType>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="BatteryLife">Батерия(в Mah)</label>
+                        <input asp-for="BatteryLife" value="@Model.BatteryLife" id="BatteryLife"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="BatteryLifeWithCase">Батерия с калъф(до колко часа)</label>
+                        <input asp-for="BatteryLifeWithCase" id="BatteryLifeWithCase" value="@Model.BatteryLifeWithCase"/>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                 <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Colour">Цвят</label>
+                        <select asp-for="Colour" class="form-control" asp-items="Html.GetEnumSelectList<Colour>()"></select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="Form-group input-control">
+                        <label for="Price">Цена(в лева)</label>
+                        <input asp-for="Price" value="@Model.Price" id="Price" />
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="button">Добави</button>
+            <a href="HeadphonesList">Назад</a>
+        </form>
+        <br />
+    </div>
+</body>
+<script src="~/js/admin/ValidateWirelessHeadphones.js"></script>
+</html>

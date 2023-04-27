@@ -1,0 +1,92 @@
+﻿@model MobilePhonesWebsite.ViewModels.UserVM.LikedVM;
+@{
+    ViewBag.Title = "Liked products";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Electronics Mart - Ecommerce Category Bootstrap Responsive Web Template | Checkout </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <!-- banner-2 -->
+    <div class="page-head_agile_info_w3l inner-checkout-page">
+        <div class="container py-5">
+            <h3 class="title-style text-white pt-5"><span>Харесани продукти</span></h3>
+            <ul class="w3_short pt-3 pb-5">
+                <li>
+                    <a href="~/Home/Index" class="text-white">Начало</a>
+                    <i class="fa fa-angle-right mx-2 text-white" aria-hidden="true"></i>
+                </li>
+                <li class="text-light">Харесани продукти</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //banner-2 -->
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+        </div>
+    </div>
+    <!-- //page -->
+    @if (Model.LikedProducts.Count == 0)
+    {
+       <p>
+            Вие не сте добавили продукти към харесани! Добавете продукт и се върнете.
+       </p>
+    }
+    else
+    {
+        <!-- checkout page -->
+        <div class="privacy py-5">
+            <div class="container py-md-5 py-4">
+                <div class="checkout-right">
+                    <h4 class="mb-sm-4 mb-3">
+                        Вие сте харесали:
+                        <span>@Model.TotalProducts Наши продукти</span>
+                    </h4>
+                    <div class="table-responsive">
+                        <table class="timetable_sub">
+                            <thead>
+                                <tr>
+                                    <th>Снимка</th>
+                                    <th>Име на продукт</th>
+                                    <th>Цена</th>
+                                    <th>Премахни</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.LikedProducts)
+                                {
+                                    <tr class="rem">
+                                        <td class="invert-image">
+                                            <a href="@Url.Action("SingleItemPage", "Products", new {productId = item.ProductId, type = item.ProductType })">
+                                                <img src="@Url.Action("GetImageForCartAndLiked", "Products", new {productId = item.ProductId, type = item.ProductType })" alt=" " class="img-responsive">
+                                            </a>
+                                        </td>
+                                        <td class="invert">@item.ProductName</td>
+                                        <td class="invert">@string.Concat(item.Price," лв.")</td>
+                                        <td class="invert">
+                                            <div class="rem">
+                                                <a class="btn btn-danger m-1" onclick="confirmRemoveFromLiked(@item.Id)">Премахни</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</body>
+
+</html>
